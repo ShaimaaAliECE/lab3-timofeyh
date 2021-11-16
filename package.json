@@ -1,0 +1,23 @@
+{
+  "name": "lab3-timofeyh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShaimaaAliECE/lab3-timofeyh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShaimaaAliECE/lab3-timofeyh/issues"
+  },
+  "homepage": "https://github.com/ShaimaaAliECE/lab3-timofeyh#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
