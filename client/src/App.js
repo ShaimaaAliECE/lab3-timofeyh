@@ -24,33 +24,31 @@ useEffect(() => {
             {!user.signedin && 
                 <LoginPage login={(id,u,p) => setUser({userID:id,username:u,password:p,signedin:true})}/>
             }
+            {user.signedin && <h1>{"Hello " + user.username}</h1>}
+            <h1 className="title">Skedule&trade;</h1>
              {meeting>0 &&
                 <>
-                <button onClick={() => setMeeting(null)}> X </button>
                 <Meeting meeting={meeting} user={user} setMeeting={() => setMeeting(null)}/> 
                 </>
             }
-            {user.signedin &&
+            {user.signedin &&!meeting>0 &&
                 <>
-                <h1>{"Hello " + user.username}</h1>
-                {!meeting>0 &&
-                    <>
-                    {newMeet &&
-                        <CreateMeeting user={user} setMeeting={(id) => setMeeting(Number(id))}/>
-                    }
-                    {!newMeet &&
-                        <button onClick={() => setNewMeet(true)}>New Meeting</button>
-                    }
-                    </>
+                {newMeet &&
+                    <CreateMeeting user={user} setMeeting={(id) => setMeeting(Number(id))}/>
+                }
+                {!newMeet &&
+                    <button onClick={() => setNewMeet(true)}>New Meeting</button>
                 }
                 </>
             }
             {!meeting>0 &&
                 <>
+                <h3>Find Skedule</h3>
                 <SearchBar openMeeting={(id) => {setMeeting(Number(id))}}/>
                 {user.signedin&& <MeetingList user={user} openMeeting={(id) => setMeeting(Number(id))}/>}
                 </>
             }
+            <footer>&#9880;SofterIssues published by &copy;Timofeyh</footer>
         </div>
     )
 }

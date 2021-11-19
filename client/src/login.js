@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useLogin } from "./useLogin";
+import "./App.css";
 
 export const LoginPage = ({login}) => {
     const [values, handleChange] = useLogin({username: '', password: ''});
@@ -41,7 +42,8 @@ export const LoginPage = ({login}) => {
     }
 
     return (
-        <div name="loginform">
+        <div className="loginform">
+            <div className="inlineChild">
             <form onSubmit={submitHandler}>
                 <input 
                     type="text" 
@@ -57,7 +59,10 @@ export const LoginPage = ({login}) => {
                 />
                 <button type="submit">Login</button>
             </form>
-            <button onClick={() => setRegister(!register)}>Register</button>
+            </div>
+            <div className="inlineChild">
+            <button onClick={() => setRegister(!register)} style={{backgroundColor:register?"gray":"#fff"}} >Register</button>
+            </div>
             {register &&
                 <form onSubmit={registerHandler}>
                     <input 

@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLogin } from "./useLogin";
 
 export const SearchBar = ({openMeeting}) => { 
-    const [search, setSearch] = useState(0);
+    const [search, setSearch] = useState(null);
 
     const handleChange = (e) => {
         e.preventDefault();

@@ -2,6 +2,37 @@ table, th, td {
     border: 2px solid black;
 }
 
+div {
+    margin: auto;
+    padding: auto;
+    text-align: center;
+}
+
 table {
     border-collapse: collapse;
+    text-align: center;
+    margin: auto;
 }
+
+.loginForm {
+    width: 50%;
+
+}
+
+.title {
+    background-color: aliceblue;
+    font: 5rem "Helvetica" bold black;
+}
+
+.meetTitle {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.inlineChild {
+    display: inline-block;
+}
+

@@ -58,7 +58,6 @@ export const Meeting = ({meeting, user, setMeeting}) => {
     }
 
     const handleVoter = (e) => {
-        e.preventDefault();
         setVoter(v => ({...v, username:e.target.value}));
     }
 
@@ -79,10 +78,9 @@ export const Meeting = ({meeting, user, setMeeting}) => {
             voter:voter,
             meeting:meeting
         }).then(res => {
-            console.log(res.data)
-            console.log(res.data.length>0);
+            setVoter(v => ({...v, username:''}))
             if (res.data.length>0) return;
-            console.log("helloooooo");
+
             axios.post("/api/castVote", {
                     voter:voter,
                     slots:prepareQuery(slots)
@@ -151,7 +149,12 @@ export const Meeting = ({meeting, user, setMeeting}) => {
     return (
         <div>
             <h1>Displaying {meeting} {updated?String(rawTable[0].status)=="SKEDULED"?" -  Skeduled":"":""}</h1>
-            <h2>{updated?String(rawTable[0].meeting):""}</h2>
+            <div className="meetTitle">
+            <h2  className="inlineChild">
+                {updated?String(rawTable[0].meeting):""}
+            </h2>
+            <button  className="inlineChild" onClick={() => setMeeting(null)}>X</button>
+            </div>
             {owner&&updated&& 
                 <>
                 {String(rawTable[0].status)=="PENDING"&&
@@ -167,7 +170,7 @@ export const Meeting = ({meeting, user, setMeeting}) => {
             {updated&&
                 <>
                 {renderMeeting()}
-                <button disabled={slots.locked} type="submit" onClick={handleSubmit}>Submit</button>
+                {String(rawTable[0].status)=="PENDING" && <button type="submit" disabled={voter.username.length===0} onClick={handleSubmit}>Submit</button>}
                 </>
             }
             </ul>
