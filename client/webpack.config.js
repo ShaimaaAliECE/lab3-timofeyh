@@ -10,8 +10,8 @@ module.exports = {
         port: 3000,
         proxy: {
             '/api': {
-                 target: 'http://localhost:3000',
-                 router: () => 'http://localhost:5000',
+                 target: 'http://localhost:3001',
+                 router: () => 'http://localhost:80',
                  logLevel: 'debug' /*optional*/
             }
          },
