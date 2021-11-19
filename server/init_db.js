@@ -1,13 +1,5 @@
-const mysql = require("mysql");
-
-let conn = mysql.createConnection({
-    host:'104.197.55.101',
-    user: 'root',
-    password: 'root',
-    database: 'skedul_db'
-});
-
-conn.connect();
+const newConnection = require("./connect_db");
+const conn = newConnection();
 
 conn.query(
     `DROP TABLE Votes;`
@@ -53,7 +45,7 @@ conn.query(
     `
     CREATE TABLE Users (
         userID int NOT NULL AUTO_INCREMENT,
-        username varchar(50),
+        username varchar(50) UNIQUE,
         password varchar(50),
         PRIMARY KEY (userID)
     );
@@ -72,6 +64,7 @@ conn.query(
         meetingID int NOT NULL AUTO_INCREMENT,
         name varchar(50),
         owner int,
+        status varchar(10) DEFAULT 'PENDING',
         PRIMARY KEY (meetingID),
         FOREIGN KEY (owner) REFERENCES Users(userID)
     );
@@ -90,6 +83,7 @@ conn.query(
         slotID int NOT NULL AUTO_INCREMENT,
         name varchar(50),
         meeting int,
+        locked boolean DEFAULT false,
         PRIMARY KEY (slotID),
         FOREIGN KEY (meeting) REFERENCES Meetings(meetingID)
     );
@@ -108,9 +102,11 @@ conn.query(
         voteID int NOT NULL AUTO_INCREMENT,
         slot int,
         user int,
+        guest varchar(50),
         PRIMARY KEY (voteID),
         FOREIGN KEY (slot) REFERENCES Slots(slotID),
-        FOREIGN KEY (user) REFERENCES Users(userID)
+        FOREIGN KEY (user) REFERENCES Users(userID),
+        UNIQUE KEY (slot, user, guest)
     );
     `,
     (err, rows, fields) => {
