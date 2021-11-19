@@ -18,6 +18,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
     console.log("Server Accessed");
 
+    
+    res.send();
 });
 
 app.get("/api/users", (req, res) => {
