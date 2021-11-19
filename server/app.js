@@ -18,23 +18,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
     console.log("Server Accessed");
 
-    let conn = newConnection();
-    conn.connect();
-
-    conn.query(
-        `
-        Describe Votes;
-        `
-        , (err, rows, fields) => {
-            const out = rows.map(r => {
-                return r.Field;
-            });
-
-            res.send(out);
-        }
-    );
-
-    conn.end();
+    res.sendFile(path.join(__dirname, 'app', 'index.html'));
 });
 
 app.get("/api/users", (req, res) => {
