@@ -18,7 +18,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
     console.log("Server Accessed");
 
-    res.sendFile(path.join(__dirname, 'client/app', 'index.html'));
+    console.log((path.join(__dirname, './client/app', 'index.html')));
+    res.sendFile(path.join(__dirname, './client/app', 'index.html'));
 });
 
 app.get("/api/users", (req, res) => {
