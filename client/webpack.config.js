@@ -6,17 +6,17 @@ module.exports = {
         filename: 'index.bundle.js',
         publicPath: '/'
     },
-    // devServer: {
-    //     port: 3001,
-    //     proxy: {
-    //         '/api': {
-    //              target: 'http://localhost:3001',
-    //              router: () => 'http://localhost:80',
-    //         }
-    //      },
-    //      historyApiFallback: {index: '/'},
-    //      hot: true
-    // },
+    devServer: {
+        port: 3001,
+        proxy: {
+            '/api': {
+                 target: 'http://localhost:3001',
+                 router: () => 'http://localhost:80',
+            }
+         },
+         historyApiFallback: {index: '/'},
+         hot: true
+    },
     module: {
         rules: [
             {
