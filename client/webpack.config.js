@@ -12,10 +12,9 @@ module.exports = {
             '/api': {
                  target: 'http://localhost:3001',
                  router: () => 'http://localhost:80',
-                 logLevel: 'debug' /*optional*/
             }
          },
-         historyApiFallback: {index: 'index.html'},
+         historyApiFallback: {index: '/'},
          hot: true
     },
     module: {
