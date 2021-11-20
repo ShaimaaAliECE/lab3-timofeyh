@@ -24,7 +24,12 @@ useEffect(() => {
             {!user.signedin && 
                 <LoginPage login={(id,u,p) => setUser({userID:id,username:u,password:p,signedin:true})}/>
             }
-            {user.signedin && <h1>{"Hello " + user.username}</h1>}
+            {user.signedin && 
+            <div className="meetTitle">
+            <h1 className="inlineChild">{"Hello " + user.username}</h1>
+            <button className="inlineChild" onClick={{userID: 0, username:'',password:'',signedin:false}}>Sign Out</button>
+            </div>
+            }
             <h1 className="title">Skedule&trade;</h1>
              {meeting>0 &&
                 <>
