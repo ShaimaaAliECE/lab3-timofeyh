@@ -22,6 +22,12 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '../client/app', 'index.html'));
 });
 
+app.get("/index.bundle.js", (req, res) => {
+    console.log("Server Accessed");
+    console.log(path.join(__dirname, '../client/app', 'index.bundle.js'))
+    res.sendFile(path.join(__dirname, '../client/app', 'index.bundle.js'));
+});
+
 app.get("/api/users", (req, res) => {
     console.log("Server Accessed");
 
