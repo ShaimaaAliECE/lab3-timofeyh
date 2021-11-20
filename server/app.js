@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 }))
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/*", (req, res) => {
     console.log("Server Accessed");
     console.log(path.join(__dirname, '../client/app', 'index.html'))
     res.sendFile(path.join(__dirname, '../client/app', 'index.html'));
