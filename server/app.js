@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     console.log("Server Accessed");
-    console.log(path.join(__dirname, 'build', 'index.html'))
+    console.log(path.join(__dirname, './client/app', 'index.html'))
     res.send();
 });
 
